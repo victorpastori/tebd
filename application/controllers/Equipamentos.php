@@ -5,31 +5,32 @@ class Equipamentos extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model("equipamentos/Equipamentos_model");
+		$this->load->model("Equipamentos_model");
+		$this->load->model("Recursos_model");
+		$this->load->model("Labs_model");
 		$this->load->library('Equipamento');
 		$this->load->library('Recurso');
 	}
 
 	public function index(){
-		$this->load->view('equipamentos/index');
+		$recursos = $this->Recursos_model->buscaIdRecrusos();
+		$labs = $this->Labs_model->buscaLabs();
+
+		$dados = array('recursos' => $recursos, 'labs' => $labs);
+
+		$this->load->view('equipamentos/index', $dados);
 	}
 
-	public function novo(){
-
-		$recurso = new Recurso();
-		$recurso->nome = "Impressora 3D";
-		$recurso->descricao = "Impressora 3D é uma maquina para impressão de objetos tridimensionais.
-		Exestem algumas tecnologias de impressão 3D, sendo a mais popular a FDM.";
-		$this->Equipamentos_model->salvarRecurso($recurso);
-		$idrecurso = $this->db->insert_id();
+	public function novoEquipamento(){
 
 		$equipamento = new Equipamento();
-		$equipamento->modelo = "Prusa i3";
-		$equipamento->especificacoes = "Mesa 20x20x20, mesa aquecida, extrusora 5mm.";
-		$equipamento->recurso_idrecurso = $idrecurso;
-		$equipamento->laboratorio_idlaboratorio = 1;
+		$equipamento->modelo = $this->input->get('modelo');
+		$equipamento->especificacoes = $this->input->get("especificacoes");
+		$equipamento->recurso_idrecurso = $this->input->get("recurso");
+		$equipamento->laboratorio_idlaboratorio = $this->input->get("laboratorio");
 
 		$this->Equipamentos_model->salvarEquipamento($equipamento);
 		$this->load->view("equipamentos/novo.php");
 	}
+
 }
