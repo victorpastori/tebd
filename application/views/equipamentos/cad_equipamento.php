@@ -15,13 +15,13 @@
 	 	</div>
 	 		<div align="center"><h1>Cadastrar Equipamentos</h1></div>
 		<div class="container">
-			<form action="index.php/Equipamentos/novoEquipamento" method="get">
+			<form action="index.php/Equipamentos/novoEquipamento" method="post">
 
             <label class="NameInput" for="">ID</label>
             <input class="form-control inputSmall" type="text" name="id" value="" disabled="">
 
             <label for="selectRecurso">Recruso</label>
-            <select class="form-control" id="selectRecurso" name="recurso" onchange="change()">
+            <select class="form-control" id="selectRecurso" name="recurso">
               <?php foreach ($recursos as $recurso) : ?>
                 <option value="<?= $recurso['idRecurso'] ?>"><?= $recurso['nome'] ?></option>
               <?php endforeach ?>
@@ -44,25 +44,4 @@
 		   </form>
 		</div>
 	</body>
-
-	<script type="text/javascript">
-
-	function change() {
-		var selectBox = document.getElementById("selectRecurso");
-    var selected = selectBox.options[selectBox.selectedIndex].value;
-    var recruso = document.getElementById("trRecurso");
-		var descricao = document.getElementById("trDescricao");
-    if(selected === '0'){
-        recruso.style.display = "block";
-				descricao.style.display = "block"
-    }
-    else{
-        recruso.style.display = "none";
-				descricao.style.display = "none";
-    }
-	}
-
-	</script>
-
-
 </html>
