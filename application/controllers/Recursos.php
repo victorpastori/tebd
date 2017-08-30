@@ -17,15 +17,12 @@ class Recursos extends CI_Controller {
 		$this->load->view('recursos/cad_recurso');
 	}
 
-	public function novoRecruso(){
+	public function novoRecurso(){
 
 		$recurso = new Recurso();
 		$recurso->nome = $this->input->post('recursoName');
 		$recurso->descricao = $this->input->post('descricao');
-		$this->Equipamentos_model->salvarRecurso($recurso);
-		$idrecurso = $this->db->insert_id();
-
-		$this->Recursos_model->salvarRecruso($recurso);
+		$this->Recursos_model->salvarRecurso($recurso);
 		$this->load->view("recursos/novo.php");
 	}
 }
