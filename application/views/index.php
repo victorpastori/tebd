@@ -14,10 +14,7 @@
  <img src ="<?= base_url("img/lab_mandacaru.png")?>" width="200" height="200" >
  </div>
 <div align="center"><h1>Sistema de Reservas do Mandacaru Lab</h1></div>
-<div align="center">
-<a href="<?php echo base_url('Equipamentos/cadEquipamento') ?>" class="css_btn_class_equipamento">Realizar Reserva</a>
-</div>
- </br>
+
  <div align="center">
  <a href="index.php/Recursos/cadRecurso" class="css_btn_class_equipamento">Cadastrar Novo Recurso</a>
  </div>

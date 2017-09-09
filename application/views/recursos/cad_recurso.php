@@ -15,7 +15,7 @@
 	 	</div>
 	 		<div align="center"><h1>Cadastrar Novo Recurso</h1></div>
 		<div class="container">
-			<form action="index.php/Recrusos/novoRecurso" method="post">
+			<form action="<?= base_url("index.php/Recursos/novoRecurso")?>" method="post">
 
             <label class="NameInput" for="">ID</label>
             <input class="form-control inputSmall" type="text" name="id" value="" disabled="">

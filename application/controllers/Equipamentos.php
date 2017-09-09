@@ -27,6 +27,8 @@ class Equipamentos extends CI_Controller {
 
 	public function novoEquipamento(){
 
+		$data = $this->input->post('businessType');
+		var_dump($data);
 		$equipamento = new Equipamento();
 		$equipamento->modelo = $this->input->post('modelo');
 		$equipamento->especificacoes = $this->input->post("especificacoes");
